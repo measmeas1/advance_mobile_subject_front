@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/Screens/Auth/register_screen.dart';
-import 'package:frontend/Screens/home_screen.dart';
+// import 'package:frontend/Screens/home_screen.dart';
+import 'package:frontend/Screens/homepage_screen.dart';
 import 'package:frontend/models/auth_model.dart';
 import 'package:frontend/service/auth_service.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -48,7 +49,7 @@ class _LoginScreenState extends State<LoginScreen> {
         if (mounted) {
           Navigator.pushReplacement(
             context,
-            MaterialPageRoute(builder: (context) => HomeScreen()),
+            MaterialPageRoute(builder: (context) => HomePage(user: authResponse.user,)),
           );
         }
 
