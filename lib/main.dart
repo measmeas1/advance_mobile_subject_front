@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/Screens/Auth/login_screen.dart';
 import 'package:frontend/Screens/account_screen.dart';
 import 'package:frontend/Screens/cart_screen.dart';
 import 'package:frontend/Screens/home_screen.dart';
@@ -20,7 +21,8 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Shopping App',
         theme: ThemeData(primarySwatch: Colors.blue),
-        home: MainNavigation(),
+        home: LoginScreen(),
+        debugShowCheckedModeBanner: false,
       ),
     );
   }
