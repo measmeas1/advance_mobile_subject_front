@@ -9,10 +9,10 @@ List<Auth> authFromJson(String str) => List<Auth>.from(json.decode(str).map((x) 
 String authToJson(List<Auth> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class Auth {
-    int id;
-    String name;
-    String email;
-    bool isAdmin;
+   final int id;
+   final String name;
+   final String email;
+   final bool isAdmin;
 
     Auth({
         required this.id,
