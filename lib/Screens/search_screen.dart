@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/utils/dummy_data.dart';
 import 'package:frontend/widgets/product_card.dart';
-import 'package:frontend/models/product.dart'; // Make sure this exists
+import 'package:frontend/widgets/productmodel.dart'; // Make sure this exists
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
@@ -12,7 +12,7 @@ class SearchScreen extends StatefulWidget {
 
 class _SearchScreenState extends State<SearchScreen> {
   final TextEditingController _searchController = TextEditingController();
-  List<Product> _searchResults = dummyProducts;
+  List<ProductModel> _searchResults = dummyProducts;
   int _visibleItemCount = 10;
 
   void _filterProducts(String query) {

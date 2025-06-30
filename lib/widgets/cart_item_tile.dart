@@ -1,9 +1,9 @@
 // lib/widgets/cart_item_tile.dart
 import 'package:flutter/material.dart';
-import '../models/product.dart';
+import 'package:frontend/widgets/productmodel.dart';
 
 class CartItemTile extends StatelessWidget {
-  final Product product;
+  final ProductModel product;
   final VoidCallback onRemove;
   final VoidCallback onIncrease;
   final VoidCallback onDecrease;

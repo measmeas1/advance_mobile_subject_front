@@ -1,11 +1,11 @@
 // lib/widgets/product_card.dart
 import 'package:flutter/material.dart';
+import 'package:frontend/widgets/productmodel.dart';
 import 'package:provider/provider.dart';
-import '../models/product.dart';
 import '../providers/cart_provider.dart';
 
 class ProductCard extends StatelessWidget {
-  final Product product;
+  final ProductModel product;
 
   const ProductCard({required this.product, super.key});
 
@@ -40,7 +40,7 @@ class ProductCard extends StatelessWidget {
               ),
               IconButton(
                 icon: Icon(Icons.add_shopping_cart),
-                onPressed: () => cart.addItem(product),
+                onPressed: () {},
               ),
             ],
           ),

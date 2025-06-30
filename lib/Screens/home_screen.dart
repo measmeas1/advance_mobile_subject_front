@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:frontend/models/product.dart';
 import 'package:frontend/utils/dummy_data.dart';
 import 'package:frontend/widgets/product_card.dart';
+import 'package:frontend/widgets/productmodel.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -12,7 +12,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final TextEditingController _searchController = TextEditingController();
-  List<Product> _filteredProducts = dummyProducts;
+  List<ProductModel> _filteredProducts = dummyProducts;
 
   void _filterProducts(String query) {
     setState(() {
