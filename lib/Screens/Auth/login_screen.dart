@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/Screens/Auth/register_screen.dart';
-// import 'package:frontend/Screens/home_screen.dart';
-import 'package:frontend/Screens/homepage_screen.dart';
+import 'package:frontend/Screens/users/admin/admin_dashboard_screen.dart';
+import 'package:frontend/Screens/users/customers/homepage_screen.dart';
 import 'package:frontend/models/auth_model.dart';
 import 'package:frontend/service/auth_service.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -47,10 +47,17 @@ class _LoginScreenState extends State<LoginScreen> {
         await _secureStorage.write(key: 'is_admin', value: authResponse.user.isAdmin.toString());
 
         if (mounted) {
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(builder: (context) => HomePage(user: authResponse.user,)),
-          );
+          if(authResponse.user.isAdmin){
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => AdminDashboardScreen(user: authResponse.user))
+            );
+          }else{
+            Navigator.pushReplacement(
+              context, 
+              MaterialPageRoute(builder: (context) => HomepageScreen(user: authResponse.user))
+            );
+          }
         }
 
         _emailController.clear();
