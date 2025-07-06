@@ -50,7 +50,6 @@ class ProductService {
   }
 
   // --- Create Product (Admin Only) ---
-   // --- EDITED: Create Product (Admin Only) to handle image upload ---
   Future<Product> createProduct(Product product, {File? imageFile}) async {
     var request = http.MultipartRequest('POST', Uri.parse('$_baseUrl/products'));
 
@@ -62,8 +61,11 @@ class ProductService {
     request.fields['description'] = product.description ?? '';
     request.fields['price'] = product.price.toString();
     request.fields['stock_quantity'] = product.stockQuantity.toString();
+
     if (product.categoryId != null) {
       request.fields['category_id'] = product.categoryId.toString();
+    }else{
+      request.fields['category_id'] = '';
     }
     // Only send image_url if no imageFile is provided and there's a URL
     if (imageFile == null && product.imageUrl != null && product.imageUrl!.isNotEmpty) {

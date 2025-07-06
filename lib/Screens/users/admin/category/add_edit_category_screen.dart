@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/models/auth_model.dart';
 import 'package:frontend/models/category.dart';
-import 'package:frontend/service/auth_service.dart';
+import 'package:frontend/service/category_service.dart';
 
 class AddEditCategoryScreen extends StatefulWidget {
-  final User user; // Pass the logged-in admin user
+  final Auth user; // Pass the logged-in admin user
   final Category? category; // Null if adding, not null if editing
 
   const AddEditCategoryScreen({super.key, required this.user, this.category});
@@ -21,7 +22,7 @@ class _AddEditCategoryScreenState extends State<AddEditCategoryScreen> {
   List<Category> _parentCategories = []; // For parent_id dropdown
   Category? _selectedParentCategory;
 
-  final AuthService _authService = AuthService();
+  final CategoryService _categoryService = CategoryService();
 
   bool _isLoading = false;
   String? _backendError;
@@ -40,7 +41,7 @@ class _AddEditCategoryScreenState extends State<AddEditCategoryScreen> {
 
   Future<void> _fetchParentCategories() async {
     try {
-      final categories = await _authService.fetchCategories();
+      final categories = await _categoryService.fetchCategories();
       setState(() {
         // Exclude the current category if editing to prevent self-referencing loops
         _parentCategories = categories.where((cat) => cat.id != widget.category?.id).toList();
@@ -75,11 +76,11 @@ class _AddEditCategoryScreenState extends State<AddEditCategoryScreen> {
       try {
         if (widget.category == null) {
           // Creating new category
-          await _authService.createCategory(newCategory);
+          await _categoryService.createCategory(newCategory);
           _showSnackBar('Category added successfully!', Colors.green);
         } else {
           // Updating existing category
-          await _authService.updateCategory(widget.category!.id, newCategory);
+          await _categoryService.updateCategory(widget.category!.id, newCategory);
           _showSnackBar('Category updated successfully!', Colors.green);
         }
         if (mounted) {

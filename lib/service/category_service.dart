@@ -2,11 +2,10 @@ import 'dart:convert';
 
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:frontend/models/category.dart';
-import 'package:frontend/models/order.dart';
 import 'package:http/http.dart' as http;
 
 class CategoryService {
-   final String _baseUrl = 'http://10.0.2.2:8000/api';
+  final String _baseUrl = 'http://10.0.2.2:8000/api';
   final FlutterSecureStorage _secureStorage = const FlutterSecureStorage();
 
   Future<String?> _getToken() async {
@@ -113,20 +112,4 @@ class CategoryService {
     }
   }
 
-  // --- Fetch Orders Method ---
-  Future<List<Order>> fetchOrders() async {
-    final response = await http.get(
-      Uri.parse('$_baseUrl/orders'), // This endpoint handles admin vs. customer filtering
-      headers: await _getAuthHeaders(),
-    );
-
-    if (response.statusCode == 200) {
-      List<dynamic> ordersJson = json.decode(response.body);
-      return ordersJson.map((json) => Order.fromJson(json)).toList();
-    } else if (response.statusCode == 403) {
-      throw Exception('Permission denied. You do not have access to view these orders.');
-    } else {
-      throw Exception('Failed to load orders. Status code: ${response.statusCode}');
-    }
-  }
 }

@@ -3,8 +3,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:frontend/Screens/Auth/login_screen.dart';
-import 'package:frontend/Screens/users/admin/admin_edit_product_screen.dart';
-import 'package:frontend/Screens/users/admin/admin_product_listing_screen.dart';
+import 'package:frontend/Screens/users/admin/category/add_edit_category_screen.dart';
+import 'package:frontend/Screens/users/admin/category/category_listing_screen.dart';
+import 'package:frontend/Screens/users/admin/order_list_screen.dart';
+import 'package:frontend/Screens/users/admin/product/admin_edit_product_screen.dart';
+import 'package:frontend/Screens/users/admin/product/admin_product_listing_screen.dart';
 import 'package:frontend/models/auth_model.dart';
 
 class AdminDashboardScreen extends StatelessWidget {
@@ -134,10 +137,10 @@ class AdminDashboardScreen extends StatelessWidget {
               label: 'Add New Category',
               color: Colors.green,
               onPressed: () {
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(builder: (context) => AddEditCategoryScreen(user: user)),
-                // );
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => AddEditCategoryScreen(user: user)),
+                );
               },
             ),
             const SizedBox(height: 15),
@@ -147,10 +150,10 @@ class AdminDashboardScreen extends StatelessWidget {
               label: 'View/Manage Categories',
               color: Colors.blue,
               onPressed: () {
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(builder: (context) => CategoryListingScreen(user: user)),
-                // );
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => CategoryListingScreen(user: user)),
+                );
               },
             ),
             const SizedBox(height: 40),
@@ -167,10 +170,10 @@ class AdminDashboardScreen extends StatelessWidget {
               label: 'View All Orders',
               color: Colors.purple,
               onPressed: () {
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(builder: (context) => OrderHistoryScreen(user: user)), // Admin sees all orders
-                // );
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => OrderListScreen(user: user)), // Admin sees all orders
+                );
               },
             ),
              const SizedBox(height: 40),

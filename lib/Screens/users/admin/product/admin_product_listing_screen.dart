@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:frontend/Screens/Auth/login_screen.dart';
-import 'package:frontend/Screens/users/admin/admin_edit_product_screen.dart';
+import 'package:frontend/Screens/users/admin/product/admin_edit_product_screen.dart';
 import 'package:frontend/models/auth_model.dart';
 import 'package:frontend/models/category.dart';
 import 'package:frontend/models/product.dart';

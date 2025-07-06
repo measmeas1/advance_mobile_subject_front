@@ -13,12 +13,14 @@ class Auth {
    final String name;
    final String email;
    final bool isAdmin;
+   final String? profileImageUrl;
 
     Auth({
         required this.id,
         required this.name,
         required this.email,
         required this.isAdmin,
+        this.profileImageUrl
 
     });
 
@@ -27,6 +29,7 @@ class Auth {
         name: json["name"],
         email: json["email"],
         isAdmin: json["is_admin"],
+        profileImageUrl: json['profile_image_url']
 
     );
 
@@ -35,6 +38,7 @@ class Auth {
         "name": name,
         "email": email,
         "is_admin": isAdmin,
+        "profile_image_url": profileImageUrl
     };
 }
 
