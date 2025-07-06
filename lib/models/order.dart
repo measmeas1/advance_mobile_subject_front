@@ -1,4 +1,6 @@
-import 'package:frontend/models/auth_model.dart';
+// lib/models/order.dart
+
+import 'package:frontend/models/auth_model.dart'; // Assuming Auth is your User model
 import 'package:frontend/models/orderitem.dart';
 
 class Order {
@@ -7,10 +9,11 @@ class Order {
   final String orderNumber;
   final double totalAmount;
   final String shippingAddress;
+  final String? phoneNumber; 
   final String orderStatus;
-  final String createdAt; // Can be parsed to DateTime if needed
-  final Auth? user; // Optional: User who placed the order (for admin view)
-  final List<OrderItem> items; // List of items in this order
+  final String createdAt;
+  final Auth? user; 
+  final List<OrderItem> items;
 
   Order({
     required this.id,
@@ -18,6 +21,7 @@ class Order {
     required this.orderNumber,
     required this.totalAmount,
     required this.shippingAddress,
+    this.phoneNumber, 
     required this.orderStatus,
     required this.createdAt,
     this.user,
@@ -32,8 +36,9 @@ class Order {
       id: json['id'],
       userId: json['user_id'],
       orderNumber: json['order_number'],
-      totalAmount: json['total_amount'].toDouble(),
+      totalAmount: double.parse(json['total_amount'].toString()),
       shippingAddress: json['shipping_address'],
+      phoneNumber: json['phone_number']?.toString(),
       orderStatus: json['order_status'],
       createdAt: json['created_at'],
       user: json['user'] != null ? Auth.fromJson(json['user']) : null,
